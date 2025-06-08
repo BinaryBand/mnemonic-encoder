@@ -1,1 +1,1 @@
-type CustomString = string;
+type ByteArray = number[];

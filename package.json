@@ -1,16 +1,17 @@
 {
-  "name": "template-typescript",
-  "version": "0.0.0-development",
+  "name": "mnemonic-encoder",
+  "version": "0.1.0",
   "description": "",
   "license": "MIT",
   "author": "Shane D",
-  "main": "./dist/bundle.js",
+  "main": "./mnemonic.js",
+  "type": "module",
   "scripts": {
-    "start": "npm run build && node .",
+    "start": "npm run build",
     "build": "npx rollup -c --bundleConfigAsCjs",
     "test": "npx jest --runInBand",
     "typecheck": "tsc --noEmit",
-    "docs": "npx typedoc --out docs ./src/**/*.ts --name \"Typescript Template\""
+    "docs": "npx typedoc --out docs ./src/**/*.ts --name \"Mnemonic Encoder\""
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
@@ -19,10 +20,10 @@
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/jest": "^29.5.14",
     "babel-jest": "^29.7.0",
-    "dotenv": "^16.5.0",
     "rollup": "^4.42.0",
     "rollup-plugin-typescript-paths": "^1.5.0",
     "ts-jest": "^29.3.4",
@@ -30,6 +31,7 @@
     "typedoc": "^0.28.5"
   },
   "dependencies": {
-    "@noble/hashes": "^1.8.0"
+    "@noble/hashes": "^1.8.0",
+    "commander": "^14.0.0"
   }
 }
