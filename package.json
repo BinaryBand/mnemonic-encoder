@@ -12,7 +12,7 @@
   "scripts": {
     "start": "npm run build && node . --help",
     "build": "rollup -c",
-    "link": "npm run build && npm run link",
+    "link": "npm run build && npm link",
     "try": "npm run try:simple",
     "try:simple": "node . encode -i \"Hello, World!\"",
     "try:roundtrip": "node . encode -f Dummy_SECRET.asc -o output.txt && node . decode -f output.txt",
