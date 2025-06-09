@@ -4,14 +4,19 @@
   "description": "",
   "license": "MIT",
   "author": "Shane D",
-  "main": "./mnemonic.js",
+  "main": "./lib/index.js",
   "type": "module",
+  "bin": {
+    "mnemonic": "./lib/index.js"
+  },
   "scripts": {
-    "start": "npm run build",
-    "build": "npx rollup -c --bundleConfigAsCjs",
+    "start": "npm run build && node . encode \"Hello, World!\"",
+    "build": "rollup -c",
+    "link": "chmod +x ./lib/index.js && npm link",
     "test": "npx jest --runInBand",
     "typecheck": "tsc --noEmit",
-    "docs": "npx typedoc --out docs ./src/**/*.ts --name \"Mnemonic Encoder\""
+    "docs": "npx typedoc --out docs ./src/**/*.ts --name \"Mnemonic Encoder\"",
+    "try": "npm run build && npm run link && mnemonic encode \"Hello, World!\""
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
@@ -27,6 +32,7 @@
     "rollup": "^4.42.0",
     "rollup-plugin-typescript-paths": "^1.5.0",
     "ts-jest": "^29.3.4",
+    "tsc-alias": "^1.8.16",
     "tslib": "^2.8.1",
     "typedoc": "^0.28.5"
   },

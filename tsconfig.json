@@ -1,25 +1,23 @@
 {
   "compilerOptions": {
     /* Language and Environment */
-    "target": "esnext",
+    "target": "es6",
 
     /* Modules */
-    "module": "es6",
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "rootDir": "./src",
+    "outDir": "./lib",
     "paths": {
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"]
     },
-    "rootDirs": ["./src", "./tests"],
-    "typeRoots": ["./node_modules/@types", "./types/**/*.d.ts"],
-    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types", "src/types/**/*.d.ts"],
 
     /* JavaScript Support */
     "allowJs": false,
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
 
     /* Type Checking */
     "strict": true,
@@ -40,11 +38,12 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "allowUnusedLabels": true,
+    "allowUnusedLabels": false,
     "allowUnreachableCode": false,
 
     /* Completeness */
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true
-  }
+    "skipDefaultLibCheck": false,
+    "skipLibCheck": false
+  },
+  "include": ["src/**/*"]
 }

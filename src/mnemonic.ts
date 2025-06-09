@@ -1,16 +1,12 @@
-import WORD_LIST from '@public/word-list.json';
-
 import { asciiToByteArray, binToByteArray, byteArrayToAscii, byteArrayToBin } from '@/helpers/encoders';
 import { getChecksum } from '@/helpers/checksum';
 import { assert, isEqual } from '@/helpers/misc';
 import { padBinaryString, unpadBinaryString } from '@/helpers/padding';
+import WORD_LIST from '@/public/word-list';
 
-export function asciiToMnemonic(asciiString: string) {
-  const asciiArray: ByteArray = asciiToByteArray(asciiString);
-  assert(byteArrayToAscii(asciiArray) === asciiString, 'ASCII string does not match original');
-
-  const binaryString: string = byteArrayToBin(asciiArray);
-  assert(isEqual(binToByteArray(binaryString), asciiArray), 'Binary string does not match original byte array');
+export function byteArrayToMnemonic(byteArray: ByteArray): string {
+  const binaryString: string = byteArrayToBin(byteArray);
+  assert(isEqual(binToByteArray(binaryString), byteArray), 'Binary string does not match original byte array');
 
   const paddedBinaryString: string = padBinaryString(binaryString);
   assert(paddedBinaryString.length % 11 === 0, 'Not properly padded');
@@ -21,8 +17,8 @@ export function asciiToMnemonic(asciiString: string) {
   assert(!indexArray.every((i) => i >= WORD_LIST.length), 'Word index out of bounds');
   assert(!indexArray.every((i) => i < 0), 'Word index is negative');
 
-  const controlChecksum: number = getChecksum(indexArray);
-  const payload: ByteArray = [...indexArray, controlChecksum];
+  const checksum: number = getChecksum(indexArray);
+  const payload: ByteArray = [...indexArray, checksum];
 
   return payload.map((index: number) => WORD_LIST[index]).join(' ');
 }
