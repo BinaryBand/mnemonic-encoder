@@ -4,19 +4,21 @@
   "description": "",
   "license": "MIT",
   "author": "Shane D",
-  "main": "./lib/index.js",
+  "main": "./lib/mnemonic.js",
   "type": "module",
   "bin": {
-    "mnemonic": "./lib/index.js"
+    "mnemonic": "./lib/mnemonic.js"
   },
   "scripts": {
-    "start": "npm run build && node . encode \"Hello, World!\"",
+    "start": "npm run build && node . --help",
     "build": "rollup -c",
-    "link": "chmod +x ./lib/index.js && npm link",
+    "link": "npm run build && npm run link",
+    "try": "npm run try:simple",
+    "try:simple": "node . encode -i \"Hello, World!\"",
+    "try:roundtrip": "node . encode -f Dummy_SECRET.asc -o output.txt && node . decode -f output.txt",
     "test": "npx jest --runInBand",
     "typecheck": "tsc --noEmit",
-    "docs": "npx typedoc --out docs ./src/**/*.ts --name \"Mnemonic Encoder\"",
-    "try": "npm run build && npm run link && mnemonic encode \"Hello, World!\""
+    "docs": "npx typedoc --out docs ./src/**/*.ts --name \"Mnemonic Encoder\""
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
@@ -32,7 +34,6 @@
     "rollup": "^4.42.0",
     "rollup-plugin-typescript-paths": "^1.5.0",
     "ts-jest": "^29.3.4",
-    "tsc-alias": "^1.8.16",
     "tslib": "^2.8.1",
     "typedoc": "^0.28.5"
   },

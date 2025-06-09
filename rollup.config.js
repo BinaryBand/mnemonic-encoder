@@ -8,13 +8,13 @@ import terser from '@rollup/plugin-terser';
 export default {
   input: 'src/index.ts',
   output: {
-    file: 'lib/index.js',
+    file: 'lib/mnemonic.js',
     format: 'esm',
     banner: '#!/usr/bin/env node',
   },
   plugins: [
     json(),
-    typescript({}),
+    typescript(),
     typescriptPaths(),
     nodeResolve({ preferBuiltins: true }),
     terser({ format: { comments: false } }),

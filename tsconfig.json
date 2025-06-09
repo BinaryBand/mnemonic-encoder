@@ -5,11 +5,10 @@
 
     /* Modules */
     "moduleResolution": "node",
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./lib",
     "paths": {
-      "@/*": ["./src/*"],
-      "@public/*": ["./public/*"]
+      "@/*": ["./src/*"]
     },
     "typeRoots": ["./node_modules/@types", "src/types/**/*.d.ts"],
 
@@ -45,5 +44,5 @@
     "skipDefaultLibCheck": false,
     "skipLibCheck": false
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "public"]
 }
