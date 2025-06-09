@@ -44,5 +44,5 @@
     "skipDefaultLibCheck": false,
     "skipLibCheck": false
   },
-  "include": ["src/**/*", "public"]
+  "include": ["src/**/*", "tests/**/*"]
 }
